@@ -14,5 +14,7 @@
     "sourceMap": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["src"]
+  "include": [
+    "copy/src"
+  ]
 }
