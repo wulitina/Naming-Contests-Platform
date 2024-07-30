@@ -1,14 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import App from "./components/app";
 
 // Define your App component
-const App = () => {
-    return (
-        <div>
-            Hello React App!
-        </div>
-    );
-};
+
 
 // Get the container element
 const container = document.getElementById("app");
