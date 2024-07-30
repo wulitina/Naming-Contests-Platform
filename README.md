@@ -8,6 +8,10 @@ For an up-to-date development environment configuration guide: **[samer.dev/reac
 npm install
 npm audit fix --force
 npx tsc -v
+
+ npm run dev:server
+ npm run dev:bundler
+ docker-compose up
 ```
 
 ### The Stack
