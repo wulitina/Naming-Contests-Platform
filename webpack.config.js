@@ -1,3 +1,4 @@
+
 module.exports = {
   entry: "./src/index.tsx",
   resolve: {
@@ -13,5 +14,5 @@ module.exports = {
         },
       },
     ],
-  },
+  }
 };
