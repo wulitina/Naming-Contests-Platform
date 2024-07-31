@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./header";
 import ContestList from "./contest-list";
+import Contest from "./contest";
 
 interface AppProps {
     initialData: {
@@ -10,9 +11,12 @@ interface AppProps {
 
 const App: React.FC<AppProps> = ({ initialData }) => {
     const [page, setPage] = useState("contestList");
-
+    const [currentContestId, setCurrentContestId] = useState<number | undefined>(undefined);
     const navigateToContest = (contestId: number) => {
         setPage("contest");
+        setCurrentContestId(contestId);
+        console.log("contest id",contestId )
+
     };
 
     const pageContent = () => {
@@ -25,7 +29,7 @@ const App: React.FC<AppProps> = ({ initialData }) => {
                     />
                 );
             case "contest":
-                return "...";
+                return <Contest id={currentContestId}/>;
             default:
                 return null;
         }

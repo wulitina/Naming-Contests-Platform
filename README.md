@@ -3,7 +3,6 @@ This is the repository for Full-Stack JavaScript Development: MongoDB, Node, and
 
 This is full-stack JavaScript development by building a web application with MongoDB, Node.js, and React.js.
 
-For an up-to-date development environment configuration guide: **[samer.dev/reactful-ts](https://samer.dev/reactful-ts)**
 ```bash
 npm install
 npm audit fix --force
