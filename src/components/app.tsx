@@ -1,10 +1,12 @@
-import {useEffect, useState} from "react";
 
 import Header from "./header";
-const App = () => {
+import ContestList from "./contest-list";
+const App = ({initialData}) => {
+    console.log({initialData});
         return (
         <div className="container">
             <Header message = "Naming Contests"/>
+            <ContestList contests= {initialData.contests}/>
         </div>
     );
 };

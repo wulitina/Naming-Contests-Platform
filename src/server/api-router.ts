@@ -9,7 +9,7 @@ router.use(cors());
 router.get("/contests",(req,res) =>{
     // get the data from mongoDB
 
-    res.send(testData);
+    res.send({contests:testData});
 })
 
 //
