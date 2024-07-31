@@ -1,16 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta ch arset="UTF-8">
+    <meta charset="UTF-8"> <!-- Ensures UTF-8 encoding -->
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel = "stylesheet" href="style.css">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> <!-- Controls viewport settings -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- Ensures compatibility with IE -->
+    <link rel="stylesheet" href="style.css"> <!-- Links the CSS file -->
     <title>Naming Contests</title>
+    <script>
+        // Safely inject the initial data into a global variable
+        window.initialData = <%= JSON.stringify(initialData) %>;
+    </script>
 </head>
 <body>
-   <div id="app"><%- initialMarkup  -%></div>
+<div id="app"><%- initialMarkup %></div> <!-- Injects HTML markup directly into the DOM -->
 
-    <script src="main.js"></script>
+<script src="main.js"></script> <!-- Links the JavaScript file -->
 </body>
 </html>

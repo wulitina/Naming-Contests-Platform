@@ -7,6 +7,6 @@ const serverRender = async () => {
     const initialMarkup = ReactDomServer.renderToString(
         <App initialData={{contests}} />
     );
-    return {initialMarkup};
+    return {initialMarkup,initialData:{contests}};
 };
 export default serverRender;

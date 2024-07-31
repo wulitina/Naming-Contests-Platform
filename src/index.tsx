@@ -1,4 +1,3 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from "./components/app";
 import axios from  "axios";
@@ -11,7 +10,7 @@ const container = document.getElementById("app");
 
 const root = createRoot(container);
     // Fetch data from API
-root.render(<App initialData = {{contests: []}} />);
+root.render(<App initialData = {(window as any).initialData} />);
 
 
 
