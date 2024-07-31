@@ -1,5 +1,4 @@
-// app.tsx
-import React from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import ContestList from "./contest-list";
 
@@ -10,12 +9,34 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = ({ initialData }) => {
+    const [page, setPage] = useState("contestList");
+
+    const navigateToContest = (contestId: number) => {
+        setPage("contest");
+    };
+
+    const pageContent = () => {
+        switch (page) {
+            case "contestList":
+                return (
+                    <ContestList
+                        initialContests={initialData.contests}
+                        onContestClick={navigateToContest}
+                    />
+                );
+            case "contest":
+                return "...";
+            default:
+                return null;
+        }
+    };
+
     console.log({ initialData });
 
     return (
         <div className="container">
             <Header message="Naming Contests" />
-            <ContestList initialContests={initialData.contests} />
+            {pageContent()}
         </div>
     );
 };
