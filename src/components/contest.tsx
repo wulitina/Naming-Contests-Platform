@@ -33,9 +33,7 @@ const Contest = ({initialContest,onContestListClick})=>{
             contestId: contest.id,
             newNameValue: newName.value,
         });
-        console.log(updatedContest);
-        //setContest(updatedContest);
-
+        setContest(updatedContest);
     };
     return (
         <>

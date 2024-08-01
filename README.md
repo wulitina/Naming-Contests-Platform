@@ -12,7 +12,8 @@ npx tsc -v
  npm run dev:bundler
  docker-compose up
 ```
-
+![img.png](src%2Freadme-pic%2Fimg.png)
+![img_1.png](src%2Freadme-pic%2Fimg_1.png)
 ### The Stack
 #### MangoDB
 - Collections and Documents
@@ -93,4 +94,9 @@ npx tsc -v
   ]
 }
 ```
-
+### More Features in The future
+- TypeScript
+- GraphQL
+- Voting on names
+- Authentication
+- Bounties and tipping
