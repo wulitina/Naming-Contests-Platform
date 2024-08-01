@@ -8,12 +8,15 @@ interface ContestType {
 }
 
 const Contest = ({initialContest})=>{
-    const [contest,setContest]=useState<ContestType | null>(initialContest)
-    // useEffect(()=>{
-    //     fetchContest(id).then((contest)=>{
-    //         setContest(contest)
-    //     })
-    // },[id])
+    const [contest,setContest]=useState(initialContest)
+    useEffect(()=>{
+        if (!contest.names){
+            fetchContest(contest.id).then((contest)=>{
+                setContest(contest)
+            })
+        }
+
+    },[contest.id ,contest.names])
     return (
         <>
         <Header message={contest?.contestName|| "Loading..."} />
