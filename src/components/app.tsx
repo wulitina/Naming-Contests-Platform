@@ -39,7 +39,7 @@ const App: React.FC<AppProps> = ({ initialData }) => {
 
     return (
         <div className="container">
-            <Header message="Naming Contests" />
+
             {pageContent()}
         </div>
     );

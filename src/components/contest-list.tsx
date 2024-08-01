@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContestPreview, { Contest } from "./contest-preview";
 import { fetchContests } from "../api-client";
+import Header from "./header";
 
 interface ContestListProps {
     initialContests: Contest[];
@@ -11,13 +12,15 @@ const ContestList: React.FC<ContestListProps> = ({ initialContests, onContestCli
     const [contests, setContests] = useState<Contest[]>(initialContests);
 
     useEffect(() => {
-        fetchContests().then((contests) => {
-            setContests(contests);
-        });
+        // fetchContests().then((contests) => {
+        //     setContests(contests);
+        // });
     }, []);
 
     return (
-        <div className="contest-list">
+        <>
+        <Header message="Naming Contests" />
+    <div className="contest-list">
             {contests.map((contest) => (
                 <ContestPreview
                     key={contest.id}
@@ -26,6 +29,7 @@ const ContestList: React.FC<ContestListProps> = ({ initialContests, onContestCli
                 />
             ))}
         </div>
+        </>
     );
 };
 

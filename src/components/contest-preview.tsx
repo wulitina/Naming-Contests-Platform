@@ -19,7 +19,7 @@ const ContestPreview: React.FC<ContestPreviewProps> = ({ contest, onClick }) => 
     };
 
     return (
-        <div className="contest-preview" onClick={handleClick}>
+        <div className="contest-preview link" onClick={handleClick}>
             <div className="category">{contest.categoryName}</div>
             <div className="contest">{contest.contestName}</div>
         </div>
