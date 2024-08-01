@@ -39,7 +39,16 @@ const App: React.FC<AppProps> = ({ initialData }) => {
         console.log("contest id",contestId )
 
     };
+    const navigateToContestList = () => {
+        window.history.pushState(
+            {},
+            "",
+            `/`
+        );
+        setPage("contestList");
+        setCurrentContest(undefined);
 
+    };
     const pageContent = () => {
         switch (page) {
             case "contestList":
@@ -50,7 +59,7 @@ const App: React.FC<AppProps> = ({ initialData }) => {
                     />
                 );
             case "contest":
-                return <Contest initialContest={currentContest}/>;
+                return <Contest initialContest={currentContest} onContestListClick={navigateToContestList} />;
             default:
                 return null;
         }

@@ -7,7 +7,7 @@ interface ContestType {
     description: string;
 }
 
-const Contest = ({initialContest})=>{
+const Contest = ({initialContest,onContestListClick})=>{
     const [contest,setContest]=useState(initialContest)
     useEffect(()=>{
         if (!contest.names){
@@ -16,7 +16,12 @@ const Contest = ({initialContest})=>{
             })
         }
 
-    },[contest.id ,contest.names])
+    },[contest.id ,contest.names]);
+    const handleClickContestList = (event:any)=>{
+        event.preventDefault();
+        onContestListClick();
+    }
+
     return (
         <>
         <Header message={contest?.contestName|| "Loading..."} />
@@ -27,6 +32,10 @@ const Contest = ({initialContest})=>{
             <div className="description">
                 {contest?contest.description:"loading..."}
             </div>
+            <a href="/" className="link" onClick={handleClickContestList}>
+                Contest Link
+            </a>
+
         </div>
         </>
     )

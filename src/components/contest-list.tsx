@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ContestPreview, { Contest } from "./contest-preview";
 import Header from "./header";
+import {fetchContestList} from "../api-client";
 
 interface ContestListProps {
     initialContests: Contest[];
@@ -8,13 +9,16 @@ interface ContestListProps {
 }
 
 const ContestList: React.FC<ContestListProps> = ({ initialContests, onContestClick }) => {
-    const [contests, setContests] = useState<Contest[]>(initialContests);
+    const [contests, setContests] = useState(initialContests??[]);
 
     useEffect(() => {
-        // fetchContests().then((contests) => {
-        //     setContests(contests);
-        // });
-    }, []);
+            if (!initialContests || !initialContests.length) {
+                fetchContestList().then((contests) => {
+                    setContests(contests);
+                });
+            }
+            }, [initialContests]);
+
 
     return (
         <>
