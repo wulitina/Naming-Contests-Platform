@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {fetchContest} from "../api-client";
+import {addNewNameToContest, fetchContest} from "../api-client";
 import Header from "./header";
 
 interface ContestType {
@@ -23,6 +23,20 @@ const Contest = ({initialContest,onContestListClick})=>{
         onContestListClick();
     }
 
+    const handleNewNameSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const form = event.target as HTMLFormElement;
+        const newName = form.elements.namedItem("newName") as HTMLInputElement;
+        //newName.value
+        const updatedContest = await addNewNameToContest({
+            contestId: contest.id,
+            newNameValue: newName.value,
+        });
+        console.log(updatedContest);
+        //setContest(updatedContest);
+
+    };
     return (
         <>
         <Header message={contest?.contestName|| "Loading..."} />
@@ -52,6 +66,17 @@ const Contest = ({initialContest,onContestListClick})=>{
                     : (
                         <div> No names proposed yet</div>
                 )}
+            </div>
+            <div className="title">Propose a New Name</div>
+            <div className="body">
+                <form onSubmit={handleNewNameSubmit}>
+                    <input
+                        type="text"
+                        name="newName"
+                        placeholder="New Name Here.."
+                        />
+                    <button type="submit">Submit</button>
+                </form>
             </div>
 
 

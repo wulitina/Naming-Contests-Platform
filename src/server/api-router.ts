@@ -31,5 +31,31 @@ router.get("/contest/:contestId", async (req, res) => {
     res.send({ contest });
 });
 
+router.post(
+    "/contest/:contestId",async (req,res)=>{
+        const client = await connectClient();
+        const {newNameValue} = req.body;
+
+        const doc = await client
+            .collection("contests")
+            .findOneAndUpdate(
+                { id: req.params.contestId },
+                {
+                    $push:{
+                        names:{
+                            id:newNameValue.toLowerCase().replace(/\s/g, "-"),
+                            name:newNameValue,
+                            timestamp:new Date().toISOString(),
+                        }
+                    }
+                },
+                {returnDocument:"after"},
+            );
+        // doc.value
+        res.send({updatedContest:doc.value})
+    }
+);
+
+
 //
 export default router;
