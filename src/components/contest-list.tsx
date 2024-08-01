@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ContestPreview, { Contest } from "./contest-preview";
-import { fetchContests } from "../api-client";
 import Header from "./header";
 
 interface ContestListProps {

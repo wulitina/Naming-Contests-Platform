@@ -1,28 +1,42 @@
-import { fetchContests } from "../api-client";
+import { fetchContest, fetchContestList } from "../api-client";
 import ReactDOMServer from "react-dom/server";
 import App from "../components/app";
 
-const serverRender = async () => {
+interface InitialData {
+    contests: { id: number; categoryName: string; contestName: string }[];
+    currentContest?: { id: number; categoryName: string; contestName: string };
+}
+
+const serverRender = async (req: any) => {
     try {
-        // Fetch contests data
-        const contests = await fetchContests();
+        const { contestId } = req.params;
+        const initialData: InitialData = contestId
+            ? {
+                contests: [], // Default empty array for contests
+                currentContest: await fetchContest(contestId)
+            }
+            : {
+                contests: await fetchContestList()
+            };
 
         // Render App component to string
         const initialMarkup = ReactDOMServer.renderToString(
-            <App initialData={{ contests }} />
+            <App initialData={initialData} />
         );
 
         // Return the rendered markup and initial data
         return {
             initialMarkup,
-            initialData: { contests },
+            initialData
         };
     } catch (error) {
         console.error("Error during server render:", error);
         // Return a fallback response or rethrow the error
         return {
             initialMarkup: "<div>Error rendering page</div>",
-            initialData: { contests: [] },
+            initialData: {
+                contests: [] // Ensure this matches the expected type
+            }
         };
     }
 };

@@ -10,9 +10,9 @@ server.use(express.static("dist"))
 server.set("view engine", "ejs")
 
 server.use("/api", apiRouter);
-server.use("/" ,async (req,res)=>{
+server.get(["/" ,"/contest/:contestId"],async (req,res)=>{
     // server render
-    const {initialMarkup,initialData}= await serverRender();
+    const {initialMarkup,initialData}= await serverRender(req);
     res.render("index",{
          initialMarkup,
          initialData,

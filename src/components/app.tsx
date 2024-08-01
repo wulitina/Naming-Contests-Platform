@@ -3,22 +3,29 @@ import Header from "./header";
 import ContestList from "./contest-list";
 import Contest from "./contest";
 
+interface ContestType {
+    id: number;
+    categoryName: string;
+    contestName: string;
+}
+
 interface AppProps {
     initialData: {
-        contests: Array<{ id: number; categoryName: string; contestName: string }>;
+        contests: ContestType[];
+        currentContest?: ContestType;
     };
 }
 
 const App: React.FC<AppProps> = ({ initialData }) => {
-    const [page, setPage] = useState("contestList");
-    const [currentContestId, setCurrentContestId] = useState<number | undefined>(undefined);
+    const [page, setPage] = useState<"contestList"|"contest">(initialData.currentContest?"contest":"contestList");
+    const [currentContest, setCurrentContest] = useState<object | undefined>(initialData.currentContest);
     useEffect(()=>{
         window.onpopstate = (event)=>{
             const newPage = event.state?.contestId
             ?"contest"
                 :"contestList"
             setPage(newPage);
-            setCurrentContestId(event.state?.contestId);
+            setCurrentContest({id:event.state?.contestId});
         };
     },[])
     const navigateToContest = (contestId: number) => {
@@ -28,7 +35,7 @@ const App: React.FC<AppProps> = ({ initialData }) => {
             `/contest/${contestId}`
         );
         setPage("contest");
-        setCurrentContestId(contestId);
+        setCurrentContest({id:contestId});
         console.log("contest id",contestId )
 
     };
@@ -43,7 +50,7 @@ const App: React.FC<AppProps> = ({ initialData }) => {
                     />
                 );
             case "contest":
-                return <Contest id={currentContestId}/>;
+                return <Contest initialContest={currentContest}/>;
             default:
                 return null;
         }

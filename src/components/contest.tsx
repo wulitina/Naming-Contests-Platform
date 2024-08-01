@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {fetchContest, fetchContests} from "../api-client";
+import {fetchContest} from "../api-client";
 import Header from "./header";
 
 interface ContestType {
@@ -7,13 +7,13 @@ interface ContestType {
     description: string;
 }
 
-const Contest = ({id})=>{
-    const [contest,setContest]=useState<ContestType | null>(null)
-    useEffect(()=>{
-        fetchContest(id).then((contest)=>{
-            setContest(contest)
-        })
-    },[id])
+const Contest = ({initialContest})=>{
+    const [contest,setContest]=useState<ContestType | null>(initialContest)
+    // useEffect(()=>{
+    //     fetchContest(id).then((contest)=>{
+    //         setContest(contest)
+    //     })
+    // },[id])
     return (
         <>
         <Header message={contest?.contestName|| "Loading..."} />
