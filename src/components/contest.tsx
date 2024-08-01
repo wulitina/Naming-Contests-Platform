@@ -9,6 +9,7 @@ interface ContestType {
 
 const Contest = ({initialContest,onContestListClick})=>{
     const [contest,setContest]=useState(initialContest)
+
     useEffect(()=>{
         if (!contest.names){
             fetchContest(contest.id).then((contest)=>{
@@ -32,6 +33,29 @@ const Contest = ({initialContest,onContestListClick})=>{
             <div className="description">
                 {contest?contest.description:"loading..."}
             </div>
+            <div className="title">
+                Proposed Names
+            </div>
+            <div className="body">
+                {contest.names?.length >0 ?
+                    <div className="list">
+                        {contest.names.map((proposedName:any)=>{
+                            return (
+                                <div key ={proposedName.id}  className="item">
+                                    {proposedName.name}
+                                </div>
+                            )
+                        })}
+
+
+                    </div>
+                    : (
+                        <div> No names proposed yet</div>
+                )}
+            </div>
+
+
+
             <a href="/" className="link" onClick={handleClickContestList}>
                 Contest Link
             </a>
