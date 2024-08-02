@@ -2,24 +2,13 @@
 This is the repository for Full-Stack JavaScript Development: MongoDB, Node, and React. 
 
 This is full-stack JavaScript development by building a web application with MongoDB, Node.js, and React.js.
-### Functionality
+###  Functionality
 - RESTAPI
 - List/Item Views
 - Navigation (&History)
 - Server-side Rendering
 - Mutating Data
 
-```bash
-npm install
-npm audit fix --force
-npx tsc -v
-
- npm run dev:server
- npm run dev:bundler
- docker-compose up
-```
-![img.png](src%2Freadme-pic%2Fimg.png)
-![img_1.png](src%2Freadme-pic%2Fimg_1.png)
 ### The Stack
 #### MangoDB
 - Collections and Documents
@@ -32,6 +21,34 @@ npx tsc -v
 - State, events, side effects
 - Server-side
 - Navigation and History (DOM API)
+
+  ![img.png](src%2Freadme-pic%2Fimg.png)
+  ![img_1.png](src%2Freadme-pic%2Fimg_1.png)
+### OverView
+#### Getting started
+- Setup and Structure 
+- Web Server (Express)
+- Bundling code (WebPack)
+- Test Data
+#### React Fundamentals
+- JSX and components
+- Props, state, events, side effects
+#### Working with Data
+- API
+- Using API endpoints in React
+- Server-side rendering
+
+
+```bash
+npm install
+npm audit fix --force
+npx tsc -v
+
+ npm run dev:server
+ npm run dev:bundler
+ docker-compose up
+```
+
 
 
 
